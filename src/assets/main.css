@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange-rgb: 195, 69, 40;
+  --orange: #c34528;
+  --dark: #222222;
+  --semi-dark: #1a1a1a;
+  --vc-pgn-background-color: rgba(var(--orange-rgb), .3);
+  --vc-pgn-active-color: var(--orange);
+  --vc-pgn-height: 1rem;
+  --vc-pgn-width: 1rem;
+  --vc-pgn-border-radius: 1rem;
+}
+
+.bg-semi-dark {
+  background-color: var(--semi-dark);
+}
+
+.bg-dark {
+  background-color: var(--dark);
+}
+
+svg polygon {
+  transition: 2.5s all;
+}
+
+#polygon-bg {
+	position: fixed;
+	z-index: -1;
+}
+
+::selection {
+  background: rgba(var(--orange-rgb), .4);
+}
+
+.bg-orange {
+  background-color: rgb(var(--orange-rgb));
+}
+
+.bg-orange-1 {
+  background-color: rgba(var(--orange-rgb), .1);
+}
+
+.bg-orange-2 {
+  background-color: rgba(var(--orange-rgb), .2);
+}
+
+.bg-orange-3 {
+  background-color: rgba(var(--orange-rgb), .3);
+}
+
+.bg-orange-4 {
+  background-color: rgba(var(--orange-rgb), .4);
+}
+
+.bg-orange-5 {
+  background-color: rgba(var(--orange-rgb), .5);
+}
+
+.bg-orange-6 {
+  background-color: rgba(var(--orange-rgb), .6);
+}
+
+.bg-orange-7 {
+  background-color: rgba(var(--orange-rgb), .7);
+}
+
+.bg-orange-8 {
+  background-color: rgba(var(--orange-rgb), .8);
+}
+
+.bg-orange-9 {
+  background-color: rgba(var(--orange-rgb), .9);
+}
+
+
+#app {
+  background: var(--dark);
+  color: white;
+}
+
+.orange {
+  color: var(--orange);
+}
+
+a {
+  transition: color .2s ease-in-out;
+}
+
+a:hover {
+  color: var(--orange)
+}
+
+.container {
+  max-width: 1280px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+input:focus-visible {
+  outline: 2px solid #c34528;
+}
+
+textarea:focus-visible {
+  outline: 2px solid #c34528;
+}
