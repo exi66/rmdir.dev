@@ -1,13 +1,13 @@
 <script setup>
 import axios from 'axios'
-import '@/js/polygon.js';
-import Projects from '@/js/projects.js';
+import '@/js/polygon.js'
+import Projects from '@/js/projects.js'
 
-import Portfolio from '@/components/PortfolioComponent.vue';
-import ExiLine from '@/components/icons/IconExiLine.vue';
-import ExiItalic from '@/components/icons/IconExiItalic.vue';
+import Portfolio from '@/components/PortfolioComponent.vue'
+import ExiLine from '@/components/icons/IconExiLine.vue'
+import ExiItalic from '@/components/icons/IconExiItalic.vue'
 
-import { shallowRef } from 'vue';
+import { shallowRef } from 'vue'
 </script>
 
 <script>

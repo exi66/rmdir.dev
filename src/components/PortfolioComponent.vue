@@ -1,8 +1,8 @@
 <script setup>
-import anime from 'animejs/lib/anime.es.js';
-import Card from '@/components/PortfolioCard.vue';
-import Modal from '@/components/PortfolioModal.vue';
-import { ref } from 'vue';
+import anime from 'animejs/lib/anime.es.js'
+import Card from '@/components/PortfolioCard.vue'
+import Modal from '@/components/PortfolioModal.vue'
+import { ref } from 'vue'
 </script>
 <script>
 export default {
