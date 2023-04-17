@@ -51,17 +51,22 @@ export default {
         </div>
         <div class="flex-1 flex flex-col">
           <div class="p-3 m-2 bg-semi-dark rounded-lg">
-            <h1 class="text-2xl uppercase text-center mb-3">{{ data.name }}</h1>
+            <h1 class="text-2xl uppercase text-center mb-3">{{ data.name }}
+              <a v-if="data.url" :href="data.url" class="orange underline truncate"><i class="bi bi-link-45deg text-lg"></i></a>
+            </h1>
             <ul class="list-disc ms-6">
-              <li class="my-2" v-if="data.url"><span class="font-bold">URL: </span>
-                <a :href="data.url" class="orange underline truncate block">{{ data.url }}</a>
+              <li class="my-2">
+                <p>
+                  <span class="font-bold">Categories: </span>
+                  <span class="px-1 py-0.5 rounded bg-orange mx-1" v-for="item in data.category" :key="item">{{ item }}</span>
+                </p>
               </li>
-              <li class="my-2"><span class="font-bold">Categories: </span>
-                <span class="px-1 py-0.5 rounded bg-orange mx-1" v-for="item in data.category" :key="item">{{ item }}</span>
+              <li class="my-2">
+                <p>
+                  <span class="font-bold">Tech: </span>
+                  <span class="px-1 py-0.5 rounded bg-orange mx-1" v-for="item in data.tech" :key="item">{{ item }}</span>
+                </p>
               </li>
-              <li class="my-2"><span class="font-bold">Tech: </span>
-                <span class="px-1 py-0.5 rounded bg-orange mx-1" v-for="item in data.tech" :key="item">{{ item }}</span>
-                </li>
             </ul>
           </div>
           <div class="p-3 m-2 bg-semi-dark rounded-lg">

@@ -57,13 +57,13 @@ export default [
     tech: ['node.js', 'exrpess.js']
   },
   {
-    name: 'bdo-servers-status',
-    description: 'Down detector for Black Desert Online',
-    details: 'A small web application that pings tcp ports and maintains latency statistics with subsequent visualization in charts.js.',
-    url: 'https://github.com/exi66/bdo-servers-status',
-    thumbnail: '/images/projects/bdo-servers-status.png',
+    name: 'tcp-servers-status',
+    description: 'Down detector for any servers',
+    details: 'A small service and web application that pings tcp ports and maintains latency statistics with subsequent visualization in charts.js.',
+    url: 'https://github.com/exi66/tcp-servers-status',
+    thumbnail: '/images/projects/tcp-servers-status.png',
     category: ['backend', 'frontend', 'others'],
-    slide: ['/images/projects/bdo-servers-status.png'],
-    tech: ['node.js', 'exrpess.js', 'js']
+    slide: ['/images/projects/tcp-servers-status.png', '/images/projects/tcp-servers-status/1.png', '/images/projects/tcp-servers-status/2.png'],
+    tech: ['node.js', 'vue.js']
   }
 ]
