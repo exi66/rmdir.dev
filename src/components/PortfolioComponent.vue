@@ -35,13 +35,11 @@ export default {
   created() {
     this.$nextTick(() => {
       this.minHeight = this.$refs.wrapper.clientHeight + 'px';
-      console.log(this.minHeight);
     });
   },
   methods: {
     openDetails(data) {
       this.currentData = data;
-      console.log(this.currentData);
       document.body.classList.add('modal-open');
       this.openModal = true;
     },
@@ -51,7 +49,6 @@ export default {
     },
     sortProjects(cat) {
       if (cat !== 'all') {
-        console.log(this.data)
         this.projects = this.data.filter(e => e.category.includes(cat));
       } else {
         this.projects = this.data;
