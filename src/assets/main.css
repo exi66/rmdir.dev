@@ -14,14 +14,6 @@
   --vc-pgn-border-radius: 1rem;
 }
 
-.bg-semi-dark {
-  background-color: var(--semi-dark);
-}
-
-.bg-dark {
-  background-color: var(--dark);
-}
-
 svg polygon {
   transition: 2.5s all;
 }
@@ -34,47 +26,6 @@ svg polygon {
 ::selection {
   background: rgba(var(--orange-rgb), .4);
 }
-
-.bg-orange {
-  background-color: rgb(var(--orange-rgb));
-}
-
-.bg-orange-1 {
-  background-color: rgba(var(--orange-rgb), .1);
-}
-
-.bg-orange-2 {
-  background-color: rgba(var(--orange-rgb), .2);
-}
-
-.bg-orange-3 {
-  background-color: rgba(var(--orange-rgb), .3);
-}
-
-.bg-orange-4 {
-  background-color: rgba(var(--orange-rgb), .4);
-}
-
-.bg-orange-5 {
-  background-color: rgba(var(--orange-rgb), .5);
-}
-
-.bg-orange-6 {
-  background-color: rgba(var(--orange-rgb), .6);
-}
-
-.bg-orange-7 {
-  background-color: rgba(var(--orange-rgb), .7);
-}
-
-.bg-orange-8 {
-  background-color: rgba(var(--orange-rgb), .8);
-}
-
-.bg-orange-9 {
-  background-color: rgba(var(--orange-rgb), .9);
-}
-
 
 #app {
   background: var(--dark);
@@ -106,9 +57,9 @@ body.modal-open {
 }
 
 input:focus-visible {
-  outline: 2px solid #c34528;
+  outline: 2px solid var(--orange);
 }
 
 textarea:focus-visible {
-  outline: 2px solid #c34528;
+  outline: 2px solid var(--orange);
 }

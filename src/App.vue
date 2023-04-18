@@ -2,8 +2,11 @@
 import axios from 'axios'
 import '@/js/polygon.js'
 import Projects from '@/js/projects.js'
+import Experience from '@/js/experience.js'
 
 import Portfolio from '@/components/PortfolioComponent.vue'
+import Techs from '@/components/TechsComponent.vue'
+
 import ExiLine from '@/components/icons/IconExiLine.vue'
 import ExiItalic from '@/components/icons/IconExiItalic.vue'
 
@@ -19,7 +22,8 @@ export default {
   data() {
     return {
       projects: shallowRef(Projects),
-      currentSection: 'home',
+      currentSection: null,
+      showToTop: false,
       homeSection: {
         top: 0,
         bottom: 0,
@@ -38,7 +42,7 @@ export default {
       contactsSection: {
         top: 0,
         bottom: 0,
-        offset: 200,
+        offset: 500,
       },
       form: {
         name: '',
@@ -57,6 +61,10 @@ export default {
     this.portfolioSection.bottom = window.scrollY + this.portfolioSection.top + this.$refs.portfolio.clientHeight;
     this.contactsSection.top = window.scrollY + this.$refs.contacts.getBoundingClientRect().y;
     this.contactsSection.bottom = window.scrollY + this.contactsSection.top + this.$refs.contacts.clientHeight;
+
+    this.$nextTick(() => {
+      this.handleScroll();
+    });
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
@@ -79,41 +87,46 @@ export default {
       }
     },
     handleScroll() {
+      this.showToTop = window.scrollY >= window.innerHeight;
       const h = window.scrollY;
-      if (h > this.homeSection.top - this.homeSection.offset && h < this.homeSection.bottom - this.homeSection.offset) this.currentSection = 'home';
-      else if (h > this.aboutSection.top - this.homeSection.offset && h < this.aboutSection.bottom - this.homeSection.offset) this.currentSection = 'about';
-      else if (h > this.portfolioSection.top - this.homeSection.offset && h < this.portfolioSection.bottom - this.homeSection.offset) this.currentSection = 'portfolio';
-      else if (h > this.contactsSection.top - this.homeSection.offset && h < this.contactsSection.bottom - this.homeSection.offset) this.currentSection = 'contacts';
+      if (h >= this.homeSection.top && h < this.homeSection.bottom - this.aboutSection.offset) this.currentSection = 'home';
+      else if (h >= this.aboutSection.top - this.aboutSection.offset && h < this.aboutSection.bottom - this.portfolioSection.offset) this.currentSection = 'about';
+      else if (h >= this.portfolioSection.top - this.portfolioSection.offset && h < this.portfolioSection.bottom - this.contactsSection.offset) this.currentSection = 'portfolio';
+      else if (h >= this.contactsSection.top - this.contactsSection.offset && h < this.contactsSection.bottom) this.currentSection = 'contacts';
     }
   }
 }
 </script>
 
 <template>
-  <header class="fixed top-0 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-auto z-10">
-    <div class="flex flex-row lg:flex-col justify-center py-2 lg:px-3">
-      <a href="#home" class="p-2 uppercase sm:text-xl lg:text-4xl" title="Home"
-        :class="currentSection == 'home' ? 'orange' : ''" @click="currentSection = 'home'">
-        <span class="lg:hidden">Home</span><i class="hidden lg:inline bi bi-house"></i>
+  <header class="fixed top-0 w-full z-10">
+    <div class="flex flex-row justify-center py-2 lg:px-3">
+      <a href="#home" class="p-2 uppercase text-xl" title="Home" :class="currentSection == 'home' ? 'text-[--orange]' : ''"
+        @click="currentSection = 'home'">
+        <i class="hidden lg:inline bi bi-house me-2"></i>
+        <span>Home</span>
       </a>
-      <a href="#about" class="p-2 uppercase sm:text-xl lg:text-4xl" title="About"
-        :class="currentSection == 'about' ? 'orange' : ''" @click="currentSection = 'about'">
-        <span class="lg:hidden">About</span><i class="hidden lg:inline bi bi-person-circle"></i>
+      <a href="#about" class="p-2 uppercase text-xl" title="About" :class="currentSection == 'about' ? 'text-[--orange]' : ''"
+        @click="currentSection = 'about'">
+        <i class="hidden lg:inline bi bi-person-circle me-2"></i>
+        <span>About</span>
       </a>
-      <a href="#portfolio" class="p-2 uppercase sm:text-xl lg:text-4xl" title="Portfolio"
-        :class="currentSection == 'portfolio' ? 'orange' : ''" @click="currentSection = 'portfolio'">
-        <span class="lg:hidden">Portfolio</span><i class="hidden lg:inline bi bi-box"></i>
+      <a href="#portfolio" class="p-2 uppercase text-xl" title="Portfolio"
+        :class="currentSection == 'portfolio' ? 'text-[--orange]' : ''" @click="currentSection = 'portfolio'">
+        <i class="hidden lg:inline bi bi-box me-2"></i>
+        <span>Portfolio</span>
       </a>
-      <a href="#contacts" class="p-2 uppercase sm:text-xl lg:text-4xl" title="Contacts"
-        :class="currentSection == 'contacts' ? 'orange' : ''" @click="currentSection = 'contacts'">
-        <span class="lg:hidden">Contacts</span><i class="hidden lg:inline bi bi-person-lines-fill"></i>
+      <a href="#contacts" class="p-2 uppercase text-xl" title="Contacts"
+        :class="currentSection == 'contacts' ? 'text-[--orange]' : ''" @click="currentSection = 'contacts'">
+        <i class="hidden lg:inline bi bi-person-lines-fill me-2"></i>
+        <span>Contacts</span>
       </a>
     </div>
   </header>
   <main>
     <section id="home" ref="home" class="mx-auto container flex flex-col justify-center min-h-screen">
       <ExiLine style="height: auto; width: 100%; max-width: 32rem;" class="mb-5 block mx-auto px-3"></ExiLine>
-      <h1 class="mx-auto text-3xl md:text-4xl">I'm a <span class="orange">junior web developer</span></h1>
+      <h1 class="mx-auto text-3xl md:text-4xl">I'm a <span class="text-[--orange]">junior web developer</span></h1>
       <div class="mx-auto mt-3">
         <div class="home-links flex justify-center content-center">
           <a href="https://github.com/exi66" class="mx-3 icon"><i class="bi bi-github"></i></a>
@@ -121,24 +134,34 @@ export default {
         </div>
       </div>
     </section>
-    <section id="about" ref="about" class="bg-semi-dark">
+    <section id="about" ref="about" class="bg-[--semi-dark]">
       <div class="mx-auto p-8 container flex flex-col">
         <h2 class="mx-auto text-4xl uppercase mb-3">About</h2>
         <div class="mx-auto flex flex-col md:flex-row mb-8">
-          <ExiItalic class="block mx-auto md:me-10 my-auto orange" style="max-width: 20rem;"></ExiItalic>
-          <div>
-            <h3 class="mx-auto text-2xl uppercase my-3"><i class="bi bi-person me-3"></i>Life</h3>
-            <p>
-              I am 22 years old, I was born and raised in Russia but currently live in Armenia. Interest in computer
-              science appeared at
-              school. I wrote my full-fledged program in the 11th grade. It was a cheat for a modded minecraft server,
-              written in Java using the javassist library to modify classes in the runtime. I became interested in web
-              technologies already at the university.
+          <ExiItalic class="block mx-auto md:me-10 my-auto text-[--orange]" style="max-width: 20rem;"></ExiItalic>
+          <div class="my-auto">
+            <h3 class="mx-auto text-2xl uppercase my-3"><i class="bi bi-person me-3"></i>Summary</h3>
+            <p class="text-white opacity-80">
+              Highly motivated junior web developer with 1 years of experience in developing and maintaining web
+              applications. Proficient in <span class="text-[--orange] font-bold">Vue</span>, <span
+                class="text-[--orange] font-bold">Laravel</span> and <span class="text-[--orange] font-bold">SQL</span>, with a strong
+              understanding
+              of front-end and back-end web development. Skilled in creating responsive and user-friendly interfaces, as
+              well as troubleshooting and debugging code. Committed to staying up-to-date with the latest web development
+              trends and best practices. Looking for an opportunity to apply and expand my skills as part of a dynamic
+              development team.
+              <!-- I am 22 years old, I was born and raised in Russia but currently live in Armenia. Interest in computer science appeared at school. I wrote my full-fledged program in the 11th grade. It was a cheat for a modded minecraft server, written in Java using the javassist library to modify classes in the runtime. I became interested in web technologies already at the university. -->
             </p>
             <h3 class="mx-auto text-2xl uppercase my-3"><i class="bi bi-book me-3"></i>Education</h3>
-            <p>
-              I studied at the Kuban State University. As part of my studies, I used technologies: dotNET (C#, C++), Java,
-              Asm, JS, PHP, Python (Django), SQL (Oracle). I dropped out in my third year because the knowledge was too
+            <p class="text-white opacity-80">
+              I studied at the Kuban State University with a Bachelor's degree in <span class="text-[--orange] font-bold">Software
+                Engineering and Information
+                Systems Management</span>. As part of my studies, I used technologies: <span
+                class="text-[--orange] font-bold">dotNET
+                (C#, C++)</span>, <span class="text-[--orange] font-bold">Java</span>,
+              <span class="text-[--orange] font-bold">ASM</span>, <span class="text-[--orange] font-bold">JS</span>, <span
+                class="text-[--orange] font-bold">PHP</span>, <span class="text-[--orange] font-bold">Python</span>, <span
+                class="text-[--orange] font-bold">SQL</span>. I dropped out in my third year because the knowledge was too
               common. In fact, in each course, we studied the basics of previously unlearned programming languages,
               without learning the main advantages and features of the language. General knowledge and skills in web
               development were obtained by me through self-study. I had experience in developing chatbots for interaction
@@ -146,126 +169,48 @@ export default {
             </p>
           </div>
         </div>
-        <h2 class="mx-auto text-4xl uppercase mb-3">Tech that I use</h2>
-        <div class="mb-8 flex flex-row">
-          <div class="hidden lg:flex flex-col">
-            <div class="my-auto flex">
-              <span class="uppercase">CSS</span>
-              <div class="ms-2 flex-grow divide my-auto"></div>
-            </div>
-            <div class="my-auto flex">
-              <span class="uppercase">Frontend</span>
-              <div class="ms-2 flex-grow divide my-auto"></div>
-            </div>
-            <div class="my-auto flex">
-              <span class="uppercase">Backend</span>
-              <div class="ms-2 flex-grow divide my-auto"></div>
-            </div>
-            <div class="my-auto flex">
-              <span class="uppercase">DB</span>
-              <div class="ms-2 flex-grow divide my-auto"></div>
-            </div>
-            <div class="my-auto flex">
-              <span class="uppercase">Web server</span>
-              <div class="ms-2 flex-grow divide my-auto"></div>
-            </div>
-            <div class="my-auto flex">
-              <span class="uppercase">Environment</span>
-              <div class="ms-2 flex-grow divide my-auto"></div>
-            </div>
-          </div>
-          <div class="hidden lg:flex flex-col flex-grow">
-            <div class="flex flex-row my-2">
-              <div class="bg-orange-1 text-center rounded mx-2 p-2 flex-1 align-middle">Bootstrap</div>
-              <div class="bg-orange-1 text-center rounded mx-2 p-2 flex-1 align-middle">Tailwindcss</div>
-            </div>
-            <div class="flex flex-row my-2">
-              <div class="bg-orange-2 text-center rounded mx-2 p-2 flex-1 align-middle">Vue.js</div>
-              <div class="bg-orange-2 text-center rounded mx-2 p-2 flex-1 align-middle">Webpack + jQuery</div>
-            </div>
-            <div class="flex flex-row my-2">
-              <div class="bg-orange-4 text-center rounded mx-2 p-2 flex-1">Laravel</div>
-              <div class="bg-orange-4 text-center rounded mx-2 p-2 flex-1">Express.js</div>
-              <div class="bg-orange-4 text-center rounded mx-2 p-2 flex-1">Pure php</div>
-            </div>
-            <div class="flex flex-row my-2">
-              <div class="bg-orange-6 text-center rounded mx-2 p-2 flex-1">MySQL</div>
-            </div>
-            <div class="flex flex-row my-2">
-              <div class="bg-orange-8 text-center rounded mx-2 p-2 flex-1">Nginx</div>
-            </div>
-            <div class="flex flex-row my-2">
-              <div class="bg-orange text-center rounded mx-2 p-2 flex-1">Ubuntu</div>
-              <div class="bg-orange text-center rounded mx-2 p-2 flex-1">CentOS</div>
-              <div class="bg-orange text-center rounded mx-2 p-2 flex-1">Docker</div>
-            </div>
-          </div>
-          <div class="flex flex-col flex-grow lg:hidden">
-            <fieldset class="flex flex-row my-2 py-2 border rounded-md">
-              <div class="bg-orange-1 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Bootstrap</span>
-              </div>
-              <div class="bg-orange-1 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Tailwindcss</span>
-              </div>
-              <legend class="mx-auto px-2 uppercase">CSS</legend>
-            </fieldset>
-            <fieldset class="flex flex-row my-2 py-2 border rounded-md">
-              <div class="bg-orange-2 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Vue.js</span>
-              </div>
-              <div class="bg-orange-2 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Webpack + jQuery</span>
-              </div>
-              <legend class="mx-auto px-2 uppercase">Frontend</legend>
-            </fieldset>
-            <fieldset class="flex flex-row my-2 py-2 border rounded-md">
-              <div class="bg-orange-4 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Laravel</span>
-              </div>
-              <div class="bg-orange-4 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Express.js</span>
-              </div>
-              <div class="bg-orange-4 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Pure PHP</span>
-              </div>
-              <legend class="mx-auto px-2 uppercase">Backend</legend>
-            </fieldset>
-            <fieldset class="flex flex-row my-2 py-2 border rounded-md">
-              <div class="bg-orange-6 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">MySQL</span>
-              </div>
-              <legend class="mx-auto px-2 uppercase">Database</legend>
-            </fieldset>
-            <fieldset class="flex flex-row my-2 py-2 border rounded-md">
-              <div class="bg-orange-8 text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Nginx</span>
-              </div>
-              <legend class="mx-auto px-2 uppercase">Web Server</legend>
-            </fieldset>
-            <fieldset class="flex flex-row my-2 py-2 border rounded-md">
-              <div class="bg-orange text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Ubuntu</span>
-              </div>
-              <div class="bg-orange text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">CentOS</span>
-              </div>
-              <div class="bg-orange text-center rounded mx-2 p-2 flex-1 flex">
-                <span class="my-auto mx-auto">Docker</span>
-              </div>
-              <legend class="mx-auto px-2 uppercase">Environment</legend>
-            </fieldset>
-          </div>
-        </div>
+        <h2 class="mx-auto text-4xl uppercase mb-6">Experience</h2>
+        <ol class="relative mb-8 mx-10">
+          <li class="pb-8 pl-8 border-l border-[--orange]" v-for="e in Experience" :key="e">
+            <span
+              class="absolute flex items-center justify-center w-8 h-8 -left-4 rounded-full bg-white ring-8 ring-opacity-60 ring-[--orange]"
+              v-html="e.icon">
+            </span>
+            <h3 class="mb-1 text-lg uppercase leading-none">{{ e.job }}</h3>
+            <span class="block mb-3 leading-none opacity-70 text-sm font-normal"><span v-if="e.title" :title="e.type">{{
+              e.title + ', ' }}</span>
+              <time class="inline-block">{{ e.subtitle }}</time>
+            </span>
+            <p class="text-base font-normal opacity-70">
+              {{ e.desctiption }}
+            </p>
+          </li>
+          <li class="pl-8 border-l border-transparent">
+            <span
+              class="absolute flex items-center justify-center w-8 h-8 -left-4 rounded-full bg-white ring-8 ring-opacity-60 ring-[--orange]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-question text-black"
+                viewBox="0 0 16 16">
+                <path
+                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+              </svg>
+            </span>
+            <h3 class="mb-1 text-lg uppercase leading-none">...</h3>
+            <span class="block mb-3 leading-none opacity-70 text-sm font-normal">
+              <span title="Company">It can be your company</span>
+            </span>
+          </li>
+        </ol>
       </div>
     </section>
     <section id="portfolio" ref="portfolio">
       <div class="mx-auto p-8 container flex flex-col">
+        <h2 class="mx-auto text-4xl uppercase mb-3">Tech that I use</h2>
+        <Techs class="mb-8"></Techs>
         <h2 class="mx-auto text-4xl uppercase mb-2">Portfolio</h2>
         <Portfolio :data="projects"></Portfolio>
       </div>
     </section>
-    <section id="contacts" ref="contacts" class="bg-semi-dark">
+    <section id="contacts" ref="contacts" class="bg-[--semi-dark]">
       <div class="mx-auto p-8 container flex flex-col">
         <h2 class="mx-auto text-4xl uppercase mb-2">Contacts</h2>
         <div class="flex flex-col lg:flex-row">
@@ -275,48 +220,51 @@ export default {
                 <i class="bi bi-github my-auto me-3 text-5xl"></i>
                 <div class="flex flex-col my-auto">
                   <span class="text-lg">GitHub</span>
-                  <a href="https://github.com/exi66" target="_blank" class="orange underline">@exi66</a>
+                  <a href="https://github.com/exi66" target="_blank" class="text-[--orange] underline">@exi66</a>
                 </div>
               </div>
               <div class="p-2 flex flex-row">
                 <i class="bi bi-telegram my-auto me-3 text-5xl"></i>
                 <div class="flex flex-col my-auto">
                   <span class="text-lg">Telegram</span>
-                  <a href="https://t.me/exi666" target="_blank" class="orange underline">@exi666</a>
+                  <a href="https://t.me/exi666" target="_blank" class="text-[--orange] underline">@exi666</a>
                 </div>
               </div>
               <div class="p-2 flex flex-row">
                 <i class="bi bi-envelope-at-fill my-auto me-3 text-5xl"></i>
                 <div class="flex flex-col my-auto">
                   <span class="text-lg">Email</span>
-                  <a href="mailto:eternityexi@gmail.ru" target="_blank" class="orange underline">eternityexi@gmail.ru</a>
+                  <a href="mailto:eternityexi@gmail.ru" target="_blank" class="text-[--orange] underline">eternityexi@gmail.ru</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="mx-auto p-2 flex-1">
-            <div v-if="formResponse" class="rounded m-2 p-3 relative" :class="formResponse.includes('Error') ? 'bg-red-800' : 'bg-green-800'">
-              <button class="absolute top-0 right-0" @click="formResponse = ''">
-                <i class="bi bi-x-lg text-base mx-0.5"></i>
-              </button>
-              <p>{{ formResponse }}</p>
-            </div>
+            <transition name="fade">
+              <div v-if="formResponse" class="rounded m-2 p-3 relative"
+                :class="formResponse.includes('Error') ? 'bg-red-800' : 'bg-green-800'">
+                <button class="absolute top-0 right-0" @click="formResponse = ''">
+                  <i class="bi bi-x-lg text-base mx-0.5"></i>
+                </button>
+                <p>{{ formResponse }}</p>
+              </div>
+            </transition>
             <form class="flex flex-row flex-wrap" ref="form" @submit.prevent="submit">
               <div class="px-2 flex-1 mt-2">
-                <label class="min-w-full">Name <span class="text-red-500">*</span>
-                  <input type="text" name="name" class="rounded-md min-w-full p-2 text-black"
+                <label class="min-w-full uppercase">Name <span class="text-red-500" title="Required">*</span>
+                  <input type="text" name="name" class="mt-1 rounded-md min-w-full p-2 text-black"
                     placeholder="Enter your name" required autocomplete="off" v-model="form.name">
                 </label>
               </div>
               <div class="px-2 flex-1 mt-2">
-                <label class="min-w-full">Email <span class="text-red-500">*</span>
-                  <input type="email" name="email" class="rounded-md min-w-full p-2 text-black"
+                <label class="min-w-full uppercase">Email <span class="text-red-500" title="Required">*</span>
+                  <input type="email" name="email" class="mt-1 rounded-md min-w-full p-2 text-black"
                     placeholder="Enter an email that I can reply to" required autocomplete="off" v-model="form.email">
                 </label>
               </div>
               <div class="px-2 mt-2 w-full">
-                <label class="min-w-full">Message <span class="text-red-500">*</span>
-                  <textarea type="email" name="email" class="rounded-md min-w-full p-2 text-black"
+                <label class="min-w-full uppercase">Message <span class="text-red-500" title="Required">*</span>
+                  <textarea type="email" name="email" class="mt-1 rounded-md min-w-full p-2 text-black"
                     placeholder="Write your message" rows="4" required autocomplete="off"
                     v-model="form.message"></textarea>
                 </label>
@@ -333,6 +281,14 @@ export default {
       </div>
     </section>
   </main>
+  <transition name="fade">
+    <div v-if="showToTop" class="fixed bottom-0 right-0 z-10 p-4">
+      <a title="To top" href="#home" class="p-2 rounded-full flex bg-[--dark] hover:text-[--orange] opacity-80"
+        style="line-height: 0;">
+        <i class="bi bi-arrow-up-circle text-5xl my-auto align-baseline" style="line-height: 0;"></i>
+      </a>
+    </div>
+  </transition>
   <footer class="flex flex-col my-8">
     <div class="mx-auto text-center flex">
       <img alt="favicon" src="/images/favicon.svg" width="24" title="by exi66">
@@ -343,14 +299,21 @@ export default {
 </template>
 
 <style scoped>
-.icon {
-  font-size: 2.5rem;
+.fade-enter-active {
+  transition: opacity .3s ease-in-out;
 }
 
-.divide {
-  height: 0px;
-  min-width: 1rem;
-  border: 1px solid white;
+.fade-leave-active {
+  transition: opacity .3s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.icon {
+  font-size: 2.5rem;
 }
 
 header {

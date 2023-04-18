@@ -21,6 +21,7 @@ export default {
       categories: [],
       openModal: ref(false),
       currentData: {},
+      minHeight: 'auto',
     }
   },
   mounted() {
@@ -30,6 +31,12 @@ export default {
     }
     this.categories = __tmp.filter((value, index, array) => array.indexOf(value) === index);
     this.projects = this.data;
+  },
+  created() {
+    this.$nextTick(() => {
+      this.minHeight = this.$refs.wrapper.clientHeight + 'px';
+      console.log(this.minHeight);
+    });
   },
   methods: {
     openDetails(data) {
@@ -89,7 +96,7 @@ export default {
 </script>
 
 <template>
-  <div class="relative min-h-screen">
+  <div class="relative calc-height" ref="wrapper">
     <div class="flex flex-row flex-wrap">
       <button class="border flex-1 rounded-md px-2 py-1 m-2 hover:text-black hover:bg-white uppercase"
         @click="sortProjects('all')">All</button>
@@ -110,6 +117,10 @@ export default {
 </template>
 
 <style scoped>
+.calc-height {
+  min-height: v-bind(minHeight);
+}
+
 .items-leave-active {
   position: absolute;
 }
