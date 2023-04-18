@@ -61,13 +61,15 @@ export default {
               <li class="my-2">
                 <p>
                   <span class="font-bold">Categories: </span>
-                  <span class="px-1 py-0.5 rounded bg-[--orange] mx-1" v-for="item in data.category" :key="item">{{ item }}</span>
+                  <span class="px-1 py-0.5 rounded bg-[--orange] mx-1" v-for="item in data.category" :key="item">{{ item
+                  }}</span>
                 </p>
               </li>
               <li class="my-2">
                 <p>
                   <span class="font-bold">Tech: </span>
-                  <span class="px-1 py-0.5 rounded bg-[--orange] mx-1" v-for="item in data.tech" :key="item">{{ item }}</span>
+                  <span class="px-1 py-0.5 rounded bg-[--orange] mx-1" v-for="item in data.tech" :key="item">{{ item
+                  }}</span>
                 </p>
               </li>
             </ul>

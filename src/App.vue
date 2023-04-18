@@ -125,8 +125,8 @@ export default {
   </header>
   <main>
     <section id="home" ref="home" class="mx-auto container flex flex-col justify-center min-h-screen">
-      <ExiLine style="height: auto; width: 100%; max-width: 32rem;" class="mb-5 block mx-auto px-3"></ExiLine>
-      <h1 class="mx-auto text-3xl md:text-4xl">I'm a <span class="text-[--orange]">junior web developer</span></h1>
+      <ExiLine class="mb-5 block mx-auto px-3 w-full max-w-lg"></ExiLine>
+      <h1 class="mx-auto text-3xl md:text-4xl">Hi, my name Egor, I'm a <span class="text-[--orange]">junior web developer</span></h1>
       <div class="mx-auto mt-3">
         <div class="home-links flex justify-center content-center">
           <a href="https://github.com/exi66" class="mx-3 icon"><i class="bi bi-github"></i></a>
@@ -138,7 +138,7 @@ export default {
       <div class="mx-auto p-8 container flex flex-col">
         <h2 class="mx-auto text-4xl uppercase mb-3">About</h2>
         <div class="mx-auto flex flex-col md:flex-row mb-8">
-          <ExiItalic class="block mx-auto md:me-10 my-auto text-[--orange]" style="max-width: 20rem;"></ExiItalic>
+          <ExiItalic class="block mx-auto md:me-10 my-auto text-[--orange] max-w-lg"></ExiItalic>
           <div class="my-auto">
             <h3 class="mx-auto text-2xl uppercase my-3"><i class="bi bi-person me-3"></i>Summary</h3>
             <p class="text-white opacity-80">
@@ -269,7 +269,7 @@ export default {
                     v-model="form.message"></textarea>
                 </label>
               </div>
-              <div style="width: 100%;" class="px-2 mt-4 flex">
+              <div class="px-2 mt-4 flex w-full">
                 <button type="submit"
                   class="border flex-grow rounded-md px-2 py-1 hover:text-black hover:bg-white uppercase">
                   Send message
@@ -283,9 +283,8 @@ export default {
   </main>
   <transition name="fade">
     <div v-if="showToTop" class="fixed bottom-0 right-0 z-10 p-4">
-      <a title="To top" href="#home" class="p-2 rounded-full flex bg-[--dark] hover:text-[--orange] opacity-80"
-        style="line-height: 0;">
-        <i class="bi bi-arrow-up-circle text-5xl my-auto align-baseline" style="line-height: 0;"></i>
+      <a title="To top" href="#home" class="p-2 rounded-full flex bg-[--dark] hover:text-[--orange] opacity-80 leading-none">
+        <i class="bi bi-arrow-up-circle text-5xl my-auto align-baseline leading-none"></i>
       </a>
     </div>
   </transition>

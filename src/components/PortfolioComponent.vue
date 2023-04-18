@@ -105,7 +105,7 @@ export default {
       <transition-group name="items" :css="false" @before-enter="beforeEnter" @before-leave="beforeLeave"
         @after-enter="afterEnter" @after-leave="afterLeave" @enter="enter" @leave="leave">
         <Card v-for="item in projects" :key="item.name" :image="item.thumbnail" :text="item.description"
-          :title="item.name" :data="item" style="min-width: 25%;" class="card" @openDetails="openDetails">
+          :title="item.name" :data="item" class="card" @openDetails="openDetails">
         </Card>
       </transition-group>
     </div>
@@ -124,6 +124,10 @@ export default {
 
 .items-move {
   transition: transform .3s ease-out;
+}
+
+.card {
+  min-width: 25%;
 }
 
 @media (min-width: 768px) {

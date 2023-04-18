@@ -67,12 +67,15 @@ export default {
 .bg-orange-1 {
   background-color: rgba(var(--orange-rgb), .1);
 }
+
 .bg-orange-2 {
   background-color: rgba(var(--orange-rgb), .2);
 }
+
 .bg-orange-3 {
   background-color: rgba(var(--orange-rgb), .3);
 }
+
 .bg-orange-4 {
   background-color: rgba(var(--orange-rgb), .4);
 }
@@ -80,24 +83,29 @@ export default {
 .bg-orange-5 {
   background-color: rgba(var(--orange-rgb), .5);
 }
+
 .bg-orange-6 {
   background-color: rgba(var(--orange-rgb), .6);
 }
+
 .bg-orange-7 {
   background-color: rgba(var(--orange-rgb), .7);
 }
+
 .bg-orange-8 {
   background-color: rgba(var(--orange-rgb), .8);
 }
+
 .bg-orange-9 {
   background-color: rgba(var(--orange-rgb), .9);
 }
+
 .bg-orange-10 {
   background-color: rgba(var(--orange-rgb), 1);
 }
+
 .divide {
   height: 0px;
   min-width: 1rem;
   border-top: 1px solid white;
-}
-</style>
+}</style>
