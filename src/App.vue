@@ -101,36 +101,40 @@ export default {
 <template>
   <header class="fixed top-0 w-full z-10">
     <div class="flex flex-row justify-center py-2 lg:px-3">
-      <a href="#home" class="p-2 uppercase text-xl" title="Home" :class="currentSection == 'home' ? 'text-[--orange]' : ''"
-        @click="currentSection = 'home'">
+      <a href="#home" class="p-2 uppercase text-xl" title="Home"
+        :class="currentSection == 'home' ? 'text-[--orange]' : ''" @click="currentSection = 'home'">
         <i class="hidden lg:inline bi bi-house me-2"></i>
         <span>Home</span>
       </a>
-      <a href="#about" class="p-2 uppercase text-xl" title="About" :class="currentSection == 'about' ? 'text-[--orange]' : ''"
-        @click="currentSection = 'about'">
+      <a href="#about" class="p-2 uppercase text-xl" title="About"
+        :class="currentSection == 'about' ? 'text-[--orange]' : ''" @click="currentSection = 'about'">
         <i class="hidden lg:inline bi bi-person-circle me-2"></i>
         <span>About</span>
       </a>
       <a href="#portfolio" class="p-2 uppercase text-xl" title="Portfolio"
         :class="currentSection == 'portfolio' ? 'text-[--orange]' : ''" @click="currentSection = 'portfolio'">
-        <i class="hidden lg:inline bi bi-box me-2"></i>
+        <i class="hidden lg:inline bi bi-braces me-2"></i>
         <span>Portfolio</span>
       </a>
       <a href="#contacts" class="p-2 uppercase text-xl" title="Contacts"
         :class="currentSection == 'contacts' ? 'text-[--orange]' : ''" @click="currentSection = 'contacts'">
-        <i class="hidden lg:inline bi bi-person-lines-fill me-2"></i>
+        <i class="hidden lg:inline bi bi-envelope me-2"></i>
         <span>Contacts</span>
       </a>
     </div>
   </header>
   <main>
-    <section id="home" ref="home" class="mx-auto container flex flex-col justify-center min-h-screen">
-      <ExiLine class="mb-5 block mx-auto px-3 w-full max-w-lg"></ExiLine>
-      <h1 class="mx-auto text-3xl md:text-4xl">Hi, my name Egor, I'm a <span class="text-[--orange]">junior web developer</span></h1>
-      <div class="mx-auto mt-3">
-        <div class="home-links flex justify-center content-center">
-          <a href="https://github.com/exi66" class="mx-3 icon"><i class="bi bi-github"></i></a>
-          <a href="https://t.me/exi666" class="mx-3 icon"><i class="bi bi-telegram"></i></a>
+    <section id="home" ref="home" class="mx-auto container flex flex-col min-h-screen">
+      <div class="flex flex-col flex-grow justify-center">
+        <ExiLine class="mb-5 block mx-auto px-3 w-full max-w-lg"></ExiLine>
+        <h1 class="mx-auto text-3xl md:text-4xl">Hi, my name Egor, I'm a <span class="text-[--orange]">junior web
+            developer</span></h1>
+        <div class="mx-auto mt-8">
+          <div class="home-links flex justify-center content-center">
+            <a href="https://github.com/exi66" class="mx-4 text-4xl" title="My GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://t.me/exi666" class="mx-4 text-4xl" title="Write to my"><i class="bi bi-telegram"></i></a>
+            <a href="/resume.pdf" class="mx-4 icon text-4xl" title="Download PDF"><i class="bi bi-download"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -144,7 +148,8 @@ export default {
             <p class="text-white opacity-80">
               Highly motivated junior web developer with 1 years of experience in developing and maintaining web
               applications. Proficient in <span class="text-[--orange] font-bold">Vue</span>, <span
-                class="text-[--orange] font-bold">Laravel</span> and <span class="text-[--orange] font-bold">SQL</span>, with a strong
+                class="text-[--orange] font-bold">Laravel</span> and <span class="text-[--orange] font-bold">SQL</span>,
+              with a strong
               understanding
               of front-end and back-end web development. Skilled in creating responsive and user-friendly interfaces, as
               well as troubleshooting and debugging code. Committed to staying up-to-date with the latest web development
@@ -154,7 +159,8 @@ export default {
             </p>
             <h3 class="mx-auto text-2xl uppercase my-3"><i class="bi bi-book me-3"></i>Education</h3>
             <p class="text-white opacity-80">
-              I studied at the Kuban State University with a Bachelor's degree in <span class="text-[--orange] font-bold">Software
+              I studied at the Kuban State University with a Bachelor's degree in <span
+                class="text-[--orange] font-bold">Software
                 Engineering and Information
                 Systems Management</span>. As part of my studies, I used technologies: <span
                 class="text-[--orange] font-bold">dotNET
@@ -234,7 +240,8 @@ export default {
                 <i class="bi bi-envelope-at-fill my-auto me-3 text-5xl"></i>
                 <div class="flex flex-col my-auto">
                   <span class="text-lg">Email</span>
-                  <a href="mailto:eternityexi@gmail.ru" target="_blank" class="text-[--orange] underline">eternityexi@gmail.ru</a>
+                  <a href="mailto:eternityexi@gmail.ru" target="_blank"
+                    class="text-[--orange] underline">eternityexi@gmail.ru</a>
                 </div>
               </div>
             </div>
@@ -283,7 +290,8 @@ export default {
   </main>
   <transition name="fade">
     <div v-if="showToTop" class="fixed bottom-0 right-0 z-10 p-4">
-      <a title="To top" href="#home" class="p-2 rounded-full flex bg-[--dark] hover:text-[--orange] opacity-80 leading-none">
+      <a title="To top" href="#home"
+        class="p-2 rounded-full flex bg-[--dark] hover:text-[--orange] opacity-80 leading-none">
         <i class="bi bi-arrow-up-circle text-5xl my-auto align-baseline leading-none"></i>
       </a>
     </div>
@@ -311,13 +319,8 @@ export default {
   opacity: 0;
 }
 
-.icon {
-  font-size: 2.5rem;
-}
-
 header {
   background: rgba(26, 26, 26, 0.4);
   backdrop-filter: blur(5px);
   border-radius: 0 1rem 1rem 0;
-}
-</style>
+}</style>
