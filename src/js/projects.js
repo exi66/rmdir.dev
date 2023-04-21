@@ -48,7 +48,7 @@ export default [
   },
   {
     name: 'helper-bot',
-    description: 'Discord.js bot for answering popular questions. Include web-ui for editing bot answers',
+    description: 'Discord.js bot for answering popular questions. Includes web-ui for editing bot answers',
     thumbnail: '/images/projects/helper-bot.png',
     category: ['backend', 'frontend', 'others'],
     slide: ['/images/projects/helper-bot.png', '/images/projects/helper-bot/1.png', '/images/projects/helper-bot/2.png'],

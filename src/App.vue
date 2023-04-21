@@ -101,22 +101,22 @@ export default {
 <template>
   <header class="fixed top-0 w-full z-10">
     <div class="flex flex-row justify-center py-2 lg:px-3">
-      <a href="#home" class="p-2 uppercase text-xl" title="Home"
+      <a href="#home" class="p-2 uppercase text-lg md:text-xl" title="Home"
         :class="currentSection == 'home' ? 'text-[--orange]' : ''" @click="currentSection = 'home'">
         <i class="hidden lg:inline bi bi-house me-2"></i>
         <span>Home</span>
       </a>
-      <a href="#about" class="p-2 uppercase text-xl" title="About"
+      <a href="#about" class="p-2 uppercase text-lg md:text-xl" title="About"
         :class="currentSection == 'about' ? 'text-[--orange]' : ''" @click="currentSection = 'about'">
         <i class="hidden lg:inline bi bi-person-circle me-2"></i>
         <span>About</span>
       </a>
-      <a href="#portfolio" class="p-2 uppercase text-xl" title="Portfolio"
+      <a href="#portfolio" class="p-2 uppercase text-lg md:text-xl" title="Portfolio"
         :class="currentSection == 'portfolio' ? 'text-[--orange]' : ''" @click="currentSection = 'portfolio'">
         <i class="hidden lg:inline bi bi-braces me-2"></i>
         <span>Portfolio</span>
       </a>
-      <a href="#contacts" class="p-2 uppercase text-xl" title="Contacts"
+      <a href="#contacts" class="p-2 uppercase text-lg md:text-xl" title="Contacts"
         :class="currentSection == 'contacts' ? 'text-[--orange]' : ''" @click="currentSection = 'contacts'">
         <i class="hidden lg:inline bi bi-envelope me-2"></i>
         <span>Contacts</span>
@@ -127,7 +127,7 @@ export default {
     <section id="home" ref="home" class="mx-auto container flex flex-col min-h-screen">
       <div class="flex flex-col flex-grow justify-center">
         <ExiLine class="mb-5 block mx-auto px-3 w-full max-w-lg"></ExiLine>
-        <h1 class="mx-auto text-3xl md:text-4xl">Hi, my name Egor, I'm a <span class="text-[--orange]">junior web
+        <h1 class="mx-auto text-xl md:text-4xl text-center">Hi, my name Egor, I'm a <span class="text-[--orange]">junior web
             developer</span></h1>
         <div class="mx-auto mt-8">
           <div class="home-links flex justify-center content-center">
