@@ -1,4 +1,4 @@
-# exi.rmdir.dev
+# me.rmdir.dev
 My one page [portfolio](https://me.rmdir.dev/) site. This version is written in Vue.
 
 ## Project Setup
