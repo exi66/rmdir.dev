@@ -1,5 +1,5 @@
-# exi.polypha.ga
-My one page [portfolio](https://exi.polypha.ga/) site. This version is written in Vue.
+# exi.rmdir.dev
+My one page [portfolio](https://exi.rmdir.dev/) site. This version is written in Vue.
 
 ## Project Setup
 
