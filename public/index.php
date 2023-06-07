@@ -12,7 +12,7 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="./assets/main.css?<?= rand() ?>"/>
     <script defer type="module" src="./assets/main.js?<?= rand() ?>"></script>
-    <title>exi</title>
+    <title>About me</title>
   </head>
   <body id="app" style="margin: 0;">
     <noscript>

@@ -1,5 +1,5 @@
 # exi.rmdir.dev
-My one page [portfolio](https://exi.rmdir.dev/) site. This version is written in Vue.
+My one page [portfolio](https://me.rmdir.dev/) site. This version is written in Vue.
 
 ## Project Setup
 
