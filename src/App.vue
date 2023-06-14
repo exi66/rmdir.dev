@@ -240,8 +240,8 @@ export default {
                 <i class="bi bi-envelope-at-fill my-auto me-3 text-5xl"></i>
                 <div class="flex flex-col my-auto">
                   <span class="text-lg">Email</span>
-                  <a href="mailto:eternityexi@gmail.ru" target="_blank"
-                    class="text-[--orange] underline">eternityexi@gmail.ru</a>
+                  <a href="mailto:me@exi.moe" target="_blank"
+                    class="text-[--orange] underline">me@exi.moe</a>
                 </div>
               </div>
             </div>
